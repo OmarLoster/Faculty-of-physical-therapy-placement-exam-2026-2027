@@ -1,0 +1,198 @@
+/* استدعاء خط Cairo الاحترافي */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    /* خلفية متدرجة عصرية وفخمة تليق بالمواقع الرسمية */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* الكارت الرئيسي */
+.container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 1px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* شريط جمالي علوي للكارت */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #2563eb, #38bdf8, #2563eb);
+}
+
+h1 {
+    color: #0f172a;
+    font-size: 23px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+p {
+    color: #64748b;
+    font-size: 14.5px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* صندوق البحث */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1e293b;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    background-color: #f8fafc;
+}
+
+input:focus {
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* زرار البحث */
+button {
+    padding: 14px 26px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* بطاقة عرض النتيجة (تصميم تذكرة الامتحان الرسمية) */
+.result-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 25px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    /* حركة ظهور ناعمة */
+    animation: slideUp 0.35s ease-out forwards;
+}
+
+/* كل سطر في بيانات النتيجة */
+.result-card p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #475569;
+    margin: 12px 0;
+    font-size: 14.5px;
+    font-weight: 600;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 10px;
+}
+
+.result-card p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* إجابات وبيانات الطالب (الشارات) */
+.result-card span {
+    color: #1e3a8a;
+    background-color: #dbeafe;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* في حالة ظهور رسالة الخطأ */
+.result-card p[style] {
+    display: block;
+    border: none;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* أنيميشن الظهور السلس */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تحسينات للشاشات الصغيرة والموبايل */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .result-card p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .result-card span {
+        width: 100%;
+        text-align: right;
+    }
+}
